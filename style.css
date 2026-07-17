@@ -1,4 +1,4 @@
-/* Base Reset & Typography */
+
 * {
     box-sizing: border-box;
     margin: 0;
@@ -7,152 +7,236 @@
 }
 
 body {
-    background-color: #f8f9fa;
     display: flex;
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    padding: 20px;
+    padding: 10px;
 }
 
-/* Onboarding Screen Layout */
+/* Page Background for Wizard State (image_6) */
+.wizard-body {
+    background: linear-gradient(180deg, #FFFFFF 0%, #E6F7F0 100%);
+}
+
+/* Page Background for standard Onboarding state */
+.onboarding-body {
+    background-color: #f8f9fa;
+}
+
+/* --- 2. Main Layout Containers --- */
 .onboarding-container {
     background-color: #ffffff;
     width: 100%;
-    max-width: 420px;
-    height: 90vh;
-    max-height: 850px;
-    border-radius: 24px;
-    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.05);
+    max-width: 420px; /* Standard mobile wizard width */
+    height: 92vh;
+    max-height: 900px;
+    border-radius: 28px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.04);
     position: relative;
     display: flex;
     flex-direction: column;
+    overflow: hidden; /* Important for grid scroll */
+}
+
+/* Standard Onboarding Padding */
+.standard-page {
     padding: 30px 24px;
-    overflow-y: auto;
 }
 
-/* Top Right Close Button */
-.close-btn {
-    position: absolute;
-    top: 24px;
-    right: 24px;
-    color: #333333;
-    text-decoration: none;
-    transition: opacity 0.2s;
+/* Wizard Selection Page Padding (image_6) */
+.card-select-page {
+    padding: 20px 16px; /* slightly smaller padding for grid */
 }
 
-.close-btn:hover {
-    opacity: 0.7;
-}
-
-/* Brand Green Header */
+/* --- 3. Generic Header & Typography --- */
 .brand-header {
-    margin-top: 10px;
-    margin-bottom: 20px;
+    width: 100%;
+    display: flex;
+    align-items: center;
 }
 
-.brand-name {
-    color: #108a55; /* Pathwell Custom Brand Green */
+.brand-header.centered-header {
+    justify-content: center;
+    margin-bottom: 25px;
+}
+
+.brand-logo {
+    height: 48px; /* Based on image_6 proportion */
+    width: auto;
+}
+
+.brand-name-text {
+    color: #108a55; /* BRAND GREEN */
     font-size: 32px;
     font-weight: 700;
-    letter-spacing: -0.5px;
 }
 
-/* Main Content Area */
-.carousel-section {
+/* Wizard Headings (image_6) */
+.main-title {
+    font-size: 26px;
+    font-weight: 700;
+    color: #1a1f36;
+    text-align: center;
+    margin-bottom: 12px;
+    line-height: 1.3;
+}
+
+.sub-title {
+    font-size: 15px;
+    color: #4f566b;
+    text-align: center;
+    margin-bottom: 8px;
+    line-height: 1.5;
+}
+
+.instruction-text {
+    font-size: 14px;
+    color: #8792a2;
+    text-align: center;
+    margin-bottom: 24px;
+}
+
+/* --- 4. Selection Grid & Cards (New from image_6) --- */
+.wizard-content {
     flex: 1;
+    overflow-y: auto; /* Grid scrolls if needed */
+    padding-bottom: 20px;
+}
+
+.selection-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* 2 columns */
+    gap: 12px;
+    padding-bottom: 10px;
+}
+
+/* The standard white card state */
+.select-card {
+    background-color: #FFFFFF;
+    border: 1px solid #E6E8F0;
+    border-radius: 16px;
+    padding: 16px;
     display: flex;
-    flex-direction: column;
     align-items: center;
-    justify-content: center;
+    gap: 12px;
+    cursor: pointer;
+    position: relative;
+    transition: all 0.2s ease-in-out;
+    min-height: 64px;
+}
+
+/* Emoji formatting */
+.choice-emoji {
+    font-size: 24px;
+    width: 32px;
     text-align: center;
 }
 
-.illustration-container {
-    width: 100%;
-    max-width: 300px;
-    margin-bottom: 30px;
-}
-
-.main-illustration {
-    width: 100%;
-    height: auto;
-    display: block;
-}
-
-.carousel-text {
-    font-size: 22px;
+/* Label text formatting */
+.choice-label {
+    font-size: 15px;
     font-weight: 600;
-    color: #111111;
-    margin-bottom: 24px;
-    padding: 0 10px;
+    color: #1a1f36;
 }
 
-/* Pagination Dots */
-.pagination-dots {
-    display: flex;
-    gap: 8px;
-    margin-bottom: 40px;
-}
-
-.dot {
-    width: 8px;
-    height: 8px;
-    background-color: #e0e0e0;
+/* The Green Checkmark icon (hidden by default) */
+.checkmark-icon {
+    display: none; /* hidden when not selected */
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 20px;
+    height: 20px;
+    background-color: #108a55; /* Brand green fill */
     border-radius: 50%;
+    color: white;
+    font-size: 12px;
+    font-weight: bold;
+    align-items: center;
+    justify-content: center;
 }
 
-.dot.active {
-    background-color: #111111;
+/* FULL WIDTH modifier (for "Other") */
+.select-card.full-width {
+    grid-column: span 2;
 }
 
-/* Bottom Actions & Buttons */
+/* --- 5. Selection Card Interaction States --- */
+
+/* CARD HOVER */
+.select-card:hover {
+    border-color: #108a55;
+    background-color: #F0FAF6;
+}
+
+/* CARD SELECTED STATE (image_6 example) */
+.select-card.selected {
+    background-color: #F0FAF6; /* Soft green fill */
+    border-color: #108a55;      /* Strong green border */
+}
+
+/* Show checkmark when selected */
+.select-card.selected .checkmark-icon {
+    display: flex;
+}
+
+/* --- 6. Generic Action Buttons --- */
 .action-footer {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 24px;
+    gap: 16px;
+    padding-top: 15px;
+    margin-top: auto; /* Pushes to bottom */
+    border-top: 1px solid #F0F2F7; /* subtle line seen in some wizard designs */
 }
 
-/* Google Sign-In Button style matches the UI request */
-.google-signin-btn {
+.brand-btn {
     width: 100%;
-    background-color: #ffffff;
-    color: #1f1f1f;
-    border: 1px solid #dadce0;
-    padding: 14px 24px;
-    border-radius: 30px;
+    max-width: 300px;
+    padding: 16px 24px;
+    border-radius: 100px;
     font-size: 16px;
     font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    border: none;
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 12px;
-    cursor: pointer;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.04);
-    transition: background-color 0.2s, box-shadow 0.2s;
 }
 
-.google-signin-btn:hover {
-    background-color: #f7f8f9;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+/* BRAND PRIMARY GREEN BUTTON (Continue in image_6) */
+.primary-btn {
+    background-color: #108a55; /* PATHWELL GREEN */
+    color: white;
 }
 
-/* Legal text block at the bottom */
-.user-agreement {
-    font-size: 13px;
-    line-height: 1.5;
-    color: #111111;
-    text-align: center;
-    padding: 0 10px;
+.primary-btn:hover {
+    background-color: #0d7045;
 }
 
-.user-agreement a {
-    color: #111111;
-    text-decoration: underline;
-    font-weight: 500;
+/* Special Button Elements */
+.continue-btn {
+    gap: 8px; /* Spacing for the arrow */
 }
 
-.user-agreement a:hover {
-    color: #108a55; /* Accent change on hover */
+.arrow {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+/* Disabled Button state */
+.primary-btn:disabled {
+    background-color: #C3E6D9;
+    cursor: not-allowed;
+}
+
+/* --- 7. Responsive Adjustments --- */
+@media (max-height: 700px) {
+    .onboarding-container {
+        height: 100vh;
+        border-radius: 0;
+    }
 }
