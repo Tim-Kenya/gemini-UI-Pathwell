@@ -1,1 +1,158 @@
+/* Base Reset & Typography */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
 
+body {
+    background-color: #f8f9fa;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+/* Onboarding Screen Layout */
+.onboarding-container {
+    background-color: #ffffff;
+    width: 100%;
+    max-width: 420px;
+    height: 90vh;
+    max-height: 850px;
+    border-radius: 24px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.05);
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    padding: 30px 24px;
+    overflow-y: auto;
+}
+
+/* Top Right Close Button */
+.close-btn {
+    position: absolute;
+    top: 24px;
+    right: 24px;
+    color: #333333;
+    text-decoration: none;
+    transition: opacity 0.2s;
+}
+
+.close-btn:hover {
+    opacity: 0.7;
+}
+
+/* Brand Green Header */
+.brand-header {
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+
+.brand-name {
+    color: #108a55; /* Pathwell Custom Brand Green */
+    font-size: 32px;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+}
+
+/* Main Content Area */
+.carousel-section {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.illustration-container {
+    width: 100%;
+    max-width: 300px;
+    margin-bottom: 30px;
+}
+
+.main-illustration {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.carousel-text {
+    font-size: 22px;
+    font-weight: 600;
+    color: #111111;
+    margin-bottom: 24px;
+    padding: 0 10px;
+}
+
+/* Pagination Dots */
+.pagination-dots {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 40px;
+}
+
+.dot {
+    width: 8px;
+    height: 8px;
+    background-color: #e0e0e0;
+    border-radius: 50%;
+}
+
+.dot.active {
+    background-color: #111111;
+}
+
+/* Bottom Actions & Buttons */
+.action-footer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
+}
+
+/* Google Sign-In Button style matches the UI request */
+.google-signin-btn {
+    width: 100%;
+    background-color: #ffffff;
+    color: #1f1f1f;
+    border: 1px solid #dadce0;
+    padding: 14px 24px;
+    border-radius: 30px;
+    font-size: 16px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    cursor: pointer;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.04);
+    transition: background-color 0.2s, box-shadow 0.2s;
+}
+
+.google-signin-btn:hover {
+    background-color: #f7f8f9;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+
+/* Legal text block at the bottom */
+.user-agreement {
+    font-size: 13px;
+    line-height: 1.5;
+    color: #111111;
+    text-align: center;
+    padding: 0 10px;
+}
+
+.user-agreement a {
+    color: #111111;
+    text-decoration: underline;
+    font-weight: 500;
+}
+
+.user-agreement a:hover {
+    color: #108a55; /* Accent change on hover */
+}
